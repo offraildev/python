@@ -1,5 +1,4 @@
-
-##Pyhtonic: Following conventions and coding styles of python language to write clean and readable code
+# Pythonic: Following conventions and coding styles of python language to write clean and readable code
 # duck typing and Easier to ask for forgiveness than permission (EAFP)
 
 # if it qucks and acts like a duck it is a duck, we don't care if it is the thing or not 
@@ -23,7 +22,7 @@ class Person:
 
 
 def quack_n_fly(thing):
-    # non- pythonic
+    # non-pythonic
     if isinstance(thing, Duck):
         thing.quack()
         thing.fly()
@@ -38,8 +37,8 @@ def quack_n_fly(thing):
         if callable(thing.fly):
             thing.fly()
 
-    # pythonic: we just do the thing want to do and ask for forgiveness if an error 
-    # occurs by handling it as an exception
+    # pythonic: we just do the thing want to do and ask for 
+    # forgiveness if an error occurs by handling it as an exception
     try: 
         thing.fly()
         thing.quack()
@@ -71,9 +70,10 @@ except KeyError as e:
     print(f"Missing key {e}")
 
 
-my_list =[1,23,35,6,2,6]
+my_list = [1,23,35,6,2,6]
+
 # non-pythonic
-if len(my_list) >=6:
+if len(my_list) >= 6:
     print(my_listp[5])
 else:
     print("that index doesn't exist")
@@ -84,5 +84,12 @@ try:
 except IndexError as e:
     print(e)
 
-# where being pythonic becomes necessary is where the if condition which was supposed 
-# to throw error didn't and the else got executed and error didn't get caught
+# why being pythonic is necessary: this is imperitive in the condition that 
+# when the if statement doesn't throw and error and else is executed the error 
+# may never be caught
+
+# callable: calllable is something that can be callled like and object.
+# built-in callable() takes in only one argument, so to check for method try 
+# obj_name.method_name (don't use (), else it will be callled) 
+
+# hasattr: check if the object has the attribute or not
