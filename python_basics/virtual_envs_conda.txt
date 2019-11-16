@@ -1,0 +1,60 @@
+Virtual envs  are useful in the sense that we can isolate our project envs, 
+its dependencies and env variables (eg: database urls, secret keys, paths, etc.).
+Also our env variables need not be specified in the code for everyone to see.
+
+# create env:
+    conda create --name env_name package1=="version" package2=="version" 
+        package3=="version"
+
+# export env packages to file for replication or sharing: 
+    conda env export > environment.yaml
+
+# activate or deactivate environments:
+    source activate env_name / linux or activate env_name / windows
+
+# create env from file:
+    conda env create -f environment.yaml
+
+# list envs:
+    conda env list
+
+# list packages of an environment when env is activated:
+    conda list 
+
+We can make use of conda env scripts to manage env varibles and activities 
+during activation and deactivation. We need to navigate to the env directory and 
+create two seperate directories for out scripts.
+
+step1: conda env list (get env directory path)
+step2: cd dir_path (navigate to the directory)
+step3: mkdir -p etc/conda/activate.d (create activate directory for script to run when env is activated)
+step4: mkdir -p etc/conda/deactivate.d (create deactivate directory for script to run when env is deactivated)
+step5: touch etc/conda/activate.d/env_vars.sh (In the activate directory, create a new bash script env_vars.sh)
+step6: touch etc/conda/deactivate.d/env_vars.sh (In the deactivate directory, create a new bash script env_vars.sh)
+step7: subl . (open up the current directory using sublime)
+step8: (open up the created script and write out env_vars in activate directory)
+example: #!/bin/sh 
+         export DATABASE_URL="value"
+step9: (opne up the env_vars.sh in unset the specified variables)
+example: #!/bin/sh
+         unset DATABASE_URL
+step10: echo $DATABASE_URL (reactivate env and check if env_var is loaded properly)
+
+for more advanced steps on how to auto activate on changing directories
+link: https://www.youtube.com/watch?v=cY2NXB_Tqq0&list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU&index=16
+
+
+
+The workflow I follow:
+https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html
+
+The original conda_auto_env code I modified can be found here:
+https://github.com/chdoig/conda-auto-env/blob/master/conda_auto_env.sh
+
+My modified version of conda_auto_env:
+https://github.com/CoreyMSchafer/code_snippets/blob/master/conda_auto_env.sh
+
+To check your python version in code and the path variable:
+import sys
+sys.version (gives the python version)
+sys.executable (gives the set path list)
