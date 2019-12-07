@@ -1,0 +1,22 @@
+# to check python version and the python executable path
+
+import sys
+sys.executable
+sys.version
+
+# to add any executable to path
+echo "PATH=path_2_executable:$PATH" > ~.bash_profile 
+here $PATH is to write out the current path in the end
+
+# check if current path echo $PATH
+
+# to search for executable 
+which python
+or type python # better option
+
+# to alias an executable
+alias python3=pyhton
+
+
+to run the executable it is run as the first path in PATH
+or we can run using the whole path or a package manager
