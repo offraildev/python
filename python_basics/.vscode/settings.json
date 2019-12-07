@@ -1,4 +1,5 @@
 {
     "editor.wordWrap": "on",
-    "editor.wordWrapColumn": 90
+    "editor.wordWrapColumn": 90,
+    "python.pythonPath": "C:\\Users\\sajid\\Anaconda3\\python.exe"
 }
